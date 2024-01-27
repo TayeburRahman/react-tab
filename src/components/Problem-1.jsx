@@ -1,14 +1,12 @@
 import React, { useState } from 'react';
 
-const formData = [
-    { name: '', status: '' }
-]
-
 const Problem1 = () => {
   const [name, setName] = useState('');
   const [status, setStatus] = useState('');
   const [show, setShow] = useState('all');
-  const [tasks, setTasks] = useState(formData);
+  const [tasks, setTasks] = useState([]);
+
+  console.log(tasks)
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -25,8 +23,8 @@ const Problem1 = () => {
   const filteredTasks = () => {
     if (show === 'all') {
         return tasks.sort((a, b) => {
-            if (a.status === 'active' && b.status !== 'active') return -1;
             if (a.status === 'completed' && b.status !== 'completed') return -1;
+            if (a.status === 'active' && b.status !== 'active') return -1; 
             return 1;
         });
     } else {
